@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<API.Common.Models.Customer>
+<div class="Dispalyinfo">
+    <br />
+    <h2 class="TitleText">The customer details</h2>
+    <table class="displayTable" width="700px">
+        <tr>
+            <th width="200px">Id</th>
+            <th width="300px">FirstName</th>
+            <th width="200px">Phone Number</th>
+        </tr>
+            @foreach (var item in Model)
+            {
+                if (item.Age == 56)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                </tr>
+                }
+            }
+   </table>
+   <br />
+
+    <h2 class="TitleText">The valide phone number in different state:</h2>
+    <table class="displayTable" width="600px">
+        <tr>
+            <th width="350px">State</th>
+            <th width="350px">Number</th>
+
+        </tr>
+        <tr>
+            <td>ACT</td>
+            <td>@Model.Where(c => c.State == "ACT" && c.PhoneNumber != "Missing or invalid").Count()</td>
+        </tr>
+        <tr>
+            <td>NSW</td>
+            <td>@Model.Where(c => (c.State == "NSW" || c.State == "") && c.PhoneNumber != "Missing or invalid").Count()</td>
+        </tr>
+        <tr>
+            <td>QLD</td>
+            <td>@Model.Where(c => c.State == "QLD" && c.PhoneNumber != "Missing or invalid").Count()</td>
+        </tr>
+        <tr>
+            <td>SA</td>
+            <td>@Model.Where(c => c.State == "SA" && c.PhoneNumber != "Missing or invalid").Count()</td>
+        </tr>
+        <tr>
+            <td>ACT</td>
+            <td>@Model.Where(c => c.State == "TAS" && c.PhoneNumber != "Missing or invalid").Count()</td>
+        </tr>
+        <tr>
+            <td>ACT</td>
+            <td>@Model.Where(c => c.State == "VIC" && c.PhoneNumber != "Missing or invalid").Count()</td>
+        </tr>
+        <tr>
+            <td>WA</td>
+            <td>@Model.Where(c => c.State == "WA" && c.PhoneNumber != "Missing or invalid").Count()</td>
+        </tr>
+        <tr>
+            <td>ACT</td>
+            <td>@Model.Where(c => c.State == "ACT" && c.PhoneNumber != "Missing or invalid").Count()</td>
+        </tr>
+    </table>
+</div>
